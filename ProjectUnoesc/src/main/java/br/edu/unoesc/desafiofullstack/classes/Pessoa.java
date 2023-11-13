@@ -1,4 +1,4 @@
-package br.edu.unoesc.desafiofullstack.entities;
+package br.edu.unoesc.desafiofullstack.classes;
 
 import java.sql.Date;
 

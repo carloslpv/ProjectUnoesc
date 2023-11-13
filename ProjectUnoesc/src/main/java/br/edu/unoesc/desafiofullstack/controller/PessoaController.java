@@ -5,8 +5,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-//Import no pacote de entidades para usar classe pessoa
-import br.edu.unoesc.desafiofullstack.entities.Pessoa;
+import br.edu.unoesc.desafiofullstack.classes.Pessoa;
 
 /*
  * Definição de um controller para a url /pessoa,
