@@ -1,6 +1,5 @@
 package br.edu.unoesc.desafiofullstack.entities;
 
-import br.edu.unoesc.desafiofullstack.classes.Pessoa;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -8,7 +7,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-
 
 @Entity
 @Table(name = "tb_contato")
@@ -22,7 +20,7 @@ public class EntityContato {
 	
 	@OneToOne
 	@JoinColumn(name = "id_pessoa")
-	private Pessoa pessoa;
+	private EntityPessoa pessoa;
 	
 	public EntityContato() {
 	}
@@ -51,11 +49,11 @@ public class EntityContato {
 		this.email = email;
 	}
 
-	public Pessoa getPessoa() {
+	public EntityPessoa getPessoa() {
 		return pessoa;
 	}
 
-	public void setPessoa(Pessoa pessoa) {
+	public void setPessoa(EntityPessoa pessoa) {
 		this.pessoa = pessoa;
 	}
 	
