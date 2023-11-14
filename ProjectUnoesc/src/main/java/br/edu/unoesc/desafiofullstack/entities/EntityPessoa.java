@@ -3,6 +3,7 @@ package br.edu.unoesc.desafiofullstack.entities;
 import java.sql.Date;
 
 import br.edu.unoesc.desafiofullstack.classes.Pessoa;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,6 +20,7 @@ public class EntityPessoa {
 	private String nome;
 	private String cpf;
 	private String sexo;
+	@Column(name = "dataNascimento")
 	private Date dataNascimento;
 	
 	//Construtor que irá receber os parametros de pessoa do controller
