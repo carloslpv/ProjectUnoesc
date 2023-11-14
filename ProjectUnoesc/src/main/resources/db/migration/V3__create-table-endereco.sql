@@ -1,8 +1,8 @@
 CREATE TABLE IF NOT EXISTS tb_endereco (
-  codigo INT NOT NULL,
-  cep INT NULL,
+  codigo INT NOT NULL AUTO_INCREMENT,
+  cep VARCHAR(9) NOT NULL,
   logradouro VARCHAR(100) NULL,
-  numero INT NULL,
+  numero VARCHAR(12) NULL,
   bairro VARCHAR(45) NULL,
   municipio VARCHAR(45) NULL,
   estado VARCHAR(45) NULL,

@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS tb_contato (
-  codigo INT NOT NULL,
-  telefone INT NULL,
+  codigo INT NOT NULL AUTO_INCREMENT,
+  telefone VARCHAR(15) NULL,
   email VARCHAR(100) NULL,
   tb_pessoa_codigo INT NOT NULL,
   PRIMARY KEY (codigo, tb_pessoa_codigo),
