@@ -2,6 +2,6 @@ CREATE TABLE IF NOT EXISTS tb_pessoa (
   codigo INT NOT NULL AUTO_INCREMENT,
   nome VARCHAR(100) NOT NULL,
   cpf VARCHAR(14) NOT NULL,
-  dataNascimento DATE NULL,
+  data_nascimento DATE NULL,
   sexo VARCHAR(12) NULL,
   PRIMARY KEY (codigo));

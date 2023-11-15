@@ -20,16 +20,11 @@ public class EntityPessoa {
 	private String nome;
 	private String cpf;
 	private String sexo;
-	@Column(name = "dataNascimento")
+	@Column(name = "data_nascimento")
 	private Date dataNascimento;
 	
 	//Construtor que irá receber os parametros de pessoa do controller
-	public EntityPessoa(Pessoa dados) {
-		this.codigo = dados.codigo();
-		this.nome = dados.nome();
-		this.cpf = dados.cpf();
-		this.sexo = dados.sexo();
-		this.dataNascimento = dados.dataNascimento();
+	public EntityPessoa() {
 	}
 
 	public Long getCodigo() {
