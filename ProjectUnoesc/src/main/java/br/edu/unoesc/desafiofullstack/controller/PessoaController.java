@@ -37,7 +37,7 @@ public class PessoaController {
 		return result;
 	}
 	
-	@GetMapping(value = "/{id}")
+	@GetMapping(value = "/{codigo}")
 	public EntityPessoa buscaCodigo(@PathVariable Long codigo) {
 		EntityPessoa result = repository.findById(codigo).get(); //findById retorna um optional, get é usado para capturar o usuário dentro deste optional
 		return result;
