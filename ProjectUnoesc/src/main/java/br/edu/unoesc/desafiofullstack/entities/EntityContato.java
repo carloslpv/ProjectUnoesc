@@ -1,5 +1,7 @@
 package br.edu.unoesc.desafiofullstack.entities;
 
+import br.edu.unoesc.desafiofullstack.classes.AtualizaContato;
+import br.edu.unoesc.desafiofullstack.classes.AtualizaPessoa;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,10 +21,22 @@ public class EntityContato {
 	private String email;
 	
 	@OneToOne
-	@JoinColumn(name = "id_pessoa")
+	@JoinColumn(name = "tb_pessoa_codigo")
 	private EntityPessoa pessoa;
 	
 	public EntityContato() {
+	}
+	
+	public void atualizaContato(AtualizaContato consultaJson) {
+		if(consultaJson.codigo() != null) {
+			this.codigo = consultaJson.codigo();
+		}
+		if(consultaJson.telefone() != null) {
+			this.telefone = consultaJson.telefone();
+		}
+		if(consultaJson.email() != null) {
+			this.email = consultaJson.email();
+		}
 	}
 
 	public Long getCodigo() {
@@ -53,9 +67,9 @@ public class EntityContato {
 		return pessoa;
 	}
 
-	public void setPessoa(EntityPessoa pessoa) {
+	public EntityContato setPessoa(EntityPessoa pessoa) {
 		this.pessoa = pessoa;
+		return this;
 	}
-	
 	
 }
