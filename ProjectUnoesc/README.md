@@ -15,7 +15,6 @@ Este projeto é uma aplicação web para cadastrar e gerenciar informações de 
 - Cadastro de contato (Telefone, E-mail).
 - Cadastro de endereço com preenchimento automático por CEP via API ViaCEP.
 - Consulta, edição e exclusão de cadastros.
-- Proteção por login.
 
 ## Endpoints Principais
 
