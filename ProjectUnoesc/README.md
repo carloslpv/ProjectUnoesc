@@ -49,13 +49,6 @@ A classe `ConsultaService` é responsável por realizar consultas no banco de da
 2. Configure as propriedades do banco de dados no arquivo `application.properties`.
 3. Execute a aplicação.
 
-## Contribuições
-Contribuições são bem-vindas! Abra issues ou pull requests para melhorar o projeto.
-
-## Licença
-Este projeto está sob a [MIT License](LICENSE).
-
-
 ## Dependências
 
 Para a implementação deste projeto, foram utilizadas as seguintes dependências:
