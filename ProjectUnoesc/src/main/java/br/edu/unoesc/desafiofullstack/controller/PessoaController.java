@@ -32,7 +32,7 @@ import br.edu.unoesc.desafiofullstack.services.ViaCepService;
 @RequestMapping(value = "/pessoa") 
 public class PessoaController {
 	
-	 //Definição de injeção de dependência,passando objeto para controller automaticamente
+	//Definição de injeção de dependência,passando objeto para controller automaticamente
 	@Autowired
 	private PessoaRepository pessoaRepository;
 	@Autowired

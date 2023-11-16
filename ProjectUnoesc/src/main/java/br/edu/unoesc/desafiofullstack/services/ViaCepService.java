@@ -52,6 +52,7 @@ import br.edu.unoesc.desafiofullstack.classes.ViaCepRecord;
 @Service
 public class ViaCepService {
 
+	//Consulta cep recebido do controller em API ViaCep
     public ViaCepRecord validaEndereco(Endereco enderecoJson){
     	RestTemplate restEntity = new RestTemplate();
     	ResponseEntity<ViaCepRecord> response = restEntity.getForEntity(

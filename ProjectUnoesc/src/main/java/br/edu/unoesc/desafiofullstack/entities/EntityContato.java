@@ -1,7 +1,6 @@
 package br.edu.unoesc.desafiofullstack.entities;
 
 import br.edu.unoesc.desafiofullstack.classes.AtualizaContato;
-import br.edu.unoesc.desafiofullstack.classes.AtualizaPessoa;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,6 +26,7 @@ public class EntityContato {
 	public EntityContato() {
 	}
 	
+	//Método para atualização dos dados - PUT
 	public void atualizaContato(AtualizaContato consultaJson) {
 		if(consultaJson.codigo() != null) {
 			this.codigo = consultaJson.codigo();

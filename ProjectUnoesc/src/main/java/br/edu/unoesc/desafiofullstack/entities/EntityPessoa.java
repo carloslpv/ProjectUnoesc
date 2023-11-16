@@ -28,6 +28,7 @@ public class EntityPessoa {
 	public EntityPessoa() {
 	}
 
+	//Método para relacionamento com classe record
 	public EntityPessoa(Pessoa pessoaJson) {
 		this.cpf = pessoaJson.cpf();
 		this.nome = pessoaJson.nome();
@@ -35,6 +36,7 @@ public class EntityPessoa {
 		this.sexo = pessoaJson.sexo();
 	}
 	
+	//Método para atualização dos dados - PUT
 	public void atualizaCadastro(AtualizaPessoa consultaJson) {
 		if(consultaJson.nome() != null) {
 			this.nome = consultaJson.nome();

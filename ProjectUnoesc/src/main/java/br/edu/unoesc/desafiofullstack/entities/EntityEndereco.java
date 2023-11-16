@@ -30,6 +30,7 @@ public class EntityEndereco {
 	public EntityEndereco() {		
 	}
 	
+	//Método para relacionamento com classe record
 	public EntityEndereco(Endereco enderecoJson) {
 		
 		this.cep = enderecoJson.cep();
@@ -41,7 +42,7 @@ public class EntityEndereco {
 
 	}
 	
-
+	//Método utilizado para put
 	public void atualizaEndereco(Endereco enderecoJson) {
 		if(enderecoJson.cep() != null) {
 			this.cep = enderecoJson.cep();
