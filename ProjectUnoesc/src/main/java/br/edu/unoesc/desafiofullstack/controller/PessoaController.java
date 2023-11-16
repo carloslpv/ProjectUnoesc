@@ -28,6 +28,11 @@ import br.edu.unoesc.desafiofullstack.repositories.PessoaRepository;
 import br.edu.unoesc.desafiofullstack.services.ConsultaService;
 import br.edu.unoesc.desafiofullstack.services.ViaCepService;
 
+/**
+ * Controlador responsável pelas operações relacionadas ao cadastro e consulta de pessoas.
+ * Utiliza as funcionalidades das classes de serviços e repositórios para interagir com o banco de dados.
+ */
+
 @RestController
 @RequestMapping(value = "/pessoa") 
 public class PessoaController {
@@ -44,19 +49,33 @@ public class PessoaController {
 	@Autowired
 	private ConsultaService servicoConsulta;
 	
-	//Cadastra pessoa
+	/**
+     * Cadastra uma nova pessoa.
+     *
+     * @param pessoaJson Objeto contendo os dados da pessoa a ser cadastrada.
+     */
 	@PostMapping(value = "/cadastro")
 	public void cadastraPessoa(@RequestBody Pessoa pessoaJson) { 
 		pessoaRepository.save(new EntityPessoa(pessoaJson));
 	}
 	
-	//Lista todas as pessoas cadastradas
+	/**
+     * Lista todas as pessoas cadastradas paginadas.
+     *
+     * @param paginacao Objeto contendo informações sobre a página atual.
+     * @return Página de pessoas cadastradas.
+     */
 	@GetMapping(value = "/cadastro")
 	public Page<Pessoa> listarPessoas(Pageable paginacao){
 		return pessoaRepository.findAll(paginacao).map(Pessoa::new);
 	}
 	
-	//Consultar todos os dados de uma pessoa
+	/**
+     * Consulta todas as informações de uma pessoa.
+     *
+     * @param codigo Código identificador da pessoa.
+     * @return Objeto contendo todas as informações da pessoa, contato e endereço.
+     */
 	@GetMapping(value = "/cadastro/{codigo}")
 	public ConsultaCompleta consultaCompleta(@PathVariable Long codigo) {
 		EntityPessoa pessoa = pessoaRepository.findById(codigo).get();
@@ -66,7 +85,12 @@ public class PessoaController {
 		return consulta;
 	}
 	
-	//Atualiza dados de cadastro de pessoa
+	/**
+     * Atualiza os dados de cadastro de uma pessoa.
+     *
+     * @param codigo Código identificador da pessoa a ser atualizada.
+     * @param consultaJson Objeto contendo os dados a serem atualizados.
+     */
 	@PutMapping(value = "/cadastro/{codigo}")
 	@Transactional
 	public void atualizaPessoa(
@@ -76,14 +100,24 @@ public class PessoaController {
 		pessoa.atualizaCadastro(consultaJson);
 	}
 	
-	//Deleta pessoa
+	/**
+     * Exclui uma pessoa pelo seu código identificador.
+     *
+     * @param codigo Código identificador da pessoa a ser excluída.
+     */
 	@DeleteMapping(value = "/{codigo}")
 	public void excluirPessoa(@PathVariable Long codigo){
 		EntityPessoa pessoa = pessoaRepository.getReferenceById(codigo);
 		pessoaRepository.deleteById(pessoa.getCodigo());
 	}
 	
-	//Cadastra contato de pesssoa
+	/**
+     * Cadastra um novo contato para uma pessoa.
+     *
+     * @param codigo Código identificador da pessoa.
+     * @param contatoJson Objeto contendo os dados do contato a ser cadastrado.
+     * @return Objeto contendo os dados do contato cadastrado.
+     */
 	@PostMapping(value = "/{codigo}/contato")
 	public EntityContato cadastraContato(
 			@PathVariable Long codigo,
@@ -94,7 +128,12 @@ public class PessoaController {
 		return contato;
 	}
 	
-	//Atualiza os contatos da pessoa
+	/**
+     * Atualiza os dados do contato de uma pessoa.
+     *
+     * @param codigo Código identificador da pessoa.
+     * @param consultaJson Objeto contendo os dados a serem atualizados.
+     */
 	@PutMapping(value = "/{codigo}/contato")
 	public void atualizaContato(
 			@PathVariable Long codigo,
@@ -107,7 +146,11 @@ public class PessoaController {
 		System.out.println(contato.getTelefone());
 	}
 	
-	//Deleta contato
+	/**
+     * Exclui o contato de uma pessoa.
+     *
+     * @param codigo Código identificador da pessoa.
+     */
 	@DeleteMapping(value = "/{codigo}/contato")
 	public void excluirContato(@PathVariable Long codigo){
 		EntityPessoa pessoa = pessoaRepository.findById(codigo).get();
@@ -116,7 +159,13 @@ public class PessoaController {
 		contatoRepository.deleteById(contato.getCodigo());
 	}
 	
-	//Cadastra endereço de pesssoa 
+	/**
+     * Cadastra um novo endereço para uma pessoa.
+     *
+     * @param codigo Código identificador da pessoa.
+     * @param enderecoJson Objeto contendo os dados do endereço a ser cadastrado.
+     * @return Objeto contendo os dados do endereço cadastrado.
+     */
 	@PostMapping(value = "/{codigo}/endereco")
 	@Transactional
 	public EntityEndereco cadastraEndereco(
@@ -133,7 +182,12 @@ public class PessoaController {
 		return endereco;
 	}
 	
-	//Atualiza endereço da pessoa
+	/**
+     * Atualiza os dados do endereço de uma pessoa.
+     *
+     * @param codigo Código identificador da pessoa.
+     * @param enderecoJson Objeto contendo os dados a serem atualizados.
+     */
 	@PutMapping(value = "/{codigo}/endereco")
 	public void atualizaEndereco(
 			@PathVariable Long codigo,
@@ -152,7 +206,12 @@ public class PessoaController {
 		System.out.println(endereco.getCep());
 	}	
 	
-	//Deleta endereco
+	/**
+	 * Deleta endereco de pessoa
+     *
+     * @param codigo Código identificador da pessoa.
+     * @param enderecoJson Objeto contendo os dados a serem atualizados.
+     */
 	@DeleteMapping(value = "/{codigo}/endereco")
 	public void excluirEndereco(@PathVariable Long codigo){
 		EntityPessoa pessoa = pessoaRepository.findById(codigo).get();
