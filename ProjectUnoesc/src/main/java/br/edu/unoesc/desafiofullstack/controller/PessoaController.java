@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -75,8 +76,15 @@ public class PessoaController {
 		pessoa.atualizaCadastro(consultaJson);
 	}
 	
+	//Deleta pessoa
+	@DeleteMapping(value = "/{codigo}")
+	public void excluirPessoa(@PathVariable Long codigo){
+		EntityPessoa pessoa = pessoaRepository.getReferenceById(codigo);
+		pessoaRepository.deleteById(pessoa.getCodigo());
+	}
+	
 	//Cadastra contato de pesssoa
-	@PostMapping(value = "cadastro/{codigo}/contato")
+	@PostMapping(value = "/{codigo}/contato")
 	public EntityContato cadastraContato(
 			@PathVariable Long codigo,
 			@RequestBody EntityContato contatoJson) { 
@@ -97,6 +105,15 @@ public class PessoaController {
 		contato.atualizaContato(consultaJson);
 		contatoRepository.save(contato);
 		System.out.println(contato.getTelefone());
+	}
+	
+	//Deleta contato
+	@DeleteMapping(value = "/{codigo}/contato")
+	public void excluirContato(@PathVariable Long codigo){
+		EntityPessoa pessoa = pessoaRepository.findById(codigo).get();
+		EntityContato contato = servicoConsulta.buscaContato(pessoa);
+		contato = contatoRepository.getReferenceById(contato.getCodigo());
+		contatoRepository.deleteById(contato.getCodigo());
 	}
 	
 	//Cadastra endereço de pesssoa 
@@ -135,6 +152,13 @@ public class PessoaController {
 		System.out.println(endereco.getCep());
 	}	
 	
-	
+	//Deleta endereco
+	@DeleteMapping(value = "/{codigo}/endereco")
+	public void excluirEndereco(@PathVariable Long codigo){
+		EntityPessoa pessoa = pessoaRepository.findById(codigo).get();
+		EntityEndereco endereco = servicoConsulta.buscaEndereco(pessoa);
+		endereco = enderecoRepository.getReferenceById(endereco.getCodigo());
+		enderecoRepository.deleteById(endereco.getCodigo());
+	}
 	
 }
