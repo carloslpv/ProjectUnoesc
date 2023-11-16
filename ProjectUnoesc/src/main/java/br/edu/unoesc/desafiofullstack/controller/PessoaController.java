@@ -56,7 +56,7 @@ public class PessoaController {
 		return pessoaRepository.findAll(paginacao).map(Pessoa::new);
 	}
 	
-	//Método para consultar todos os dados de uma pessoa
+	//Consultar todos os dados de uma pessoa
 	@GetMapping(value = "/cadastro/{codigo}")
 	public ConsultaCompleta consultaCompleta(@PathVariable Long codigo) {
 		EntityPessoa pessoa = pessoaRepository.findById(codigo).get();
