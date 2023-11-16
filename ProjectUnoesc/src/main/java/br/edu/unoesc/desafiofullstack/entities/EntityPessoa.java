@@ -2,6 +2,7 @@ package br.edu.unoesc.desafiofullstack.entities;
 
 import java.sql.Date;
 
+import br.edu.unoesc.desafiofullstack.classes.AtualizaPessoa;
 import br.edu.unoesc.desafiofullstack.classes.Pessoa;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,6 +26,28 @@ public class EntityPessoa {
 	
 	//Construtor que irá receber os parametros de pessoa do controller
 	public EntityPessoa() {
+	}
+
+	public EntityPessoa(Pessoa pessoaJson) {
+		this.cpf = pessoaJson.cpf();
+		this.nome = pessoaJson.nome();
+		this.dataNascimento = pessoaJson.dataNascimento();
+		this.sexo = pessoaJson.sexo();
+	}
+	
+	public void atualizaCadastro(AtualizaPessoa consultaJson) {
+		if(consultaJson.nome() != null) {
+			this.nome = consultaJson.nome();
+		}
+		if(consultaJson.cpf() != null) {
+			this.cpf = consultaJson.cpf();
+		}
+		if(consultaJson.dataNascimento() != null) {
+			this.dataNascimento = consultaJson.dataNascimento();
+		}
+		if(consultaJson.sexo() != null) {
+			this.sexo = consultaJson.sexo();
+		}
 	}
 
 	public Long getCodigo() {

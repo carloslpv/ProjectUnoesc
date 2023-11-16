@@ -1,5 +1,6 @@
 package br.edu.unoesc.desafiofullstack.entities;
 
+import br.edu.unoesc.desafiofullstack.classes.Endereco;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,10 +24,44 @@ public class EntityEndereco {
 	private String estado;
 	
 	@OneToOne
-	@JoinColumn(name = "id_pessoa")
+	@JoinColumn(name = "tb_pessoa_codigo")
 	private EntityPessoa pessoa;
 	
 	public EntityEndereco() {		
+	}
+	
+	public EntityEndereco(Endereco enderecoJson) {
+		
+		this.cep = enderecoJson.cep();
+		this.bairro = enderecoJson.bairro();
+		this.estado = enderecoJson.uf();
+		this.logradouro = enderecoJson.logradouro();
+		this.municipio = enderecoJson.localidade();
+		this.numero = enderecoJson.numero();
+
+	}
+	
+
+	public void atualizaEndereco(Endereco enderecoJson) {
+		if(enderecoJson.cep() != null) {
+			this.cep = enderecoJson.cep();
+		}
+		if(enderecoJson.bairro() != null) {
+			this.bairro = enderecoJson.bairro();
+		}
+		if(enderecoJson.uf() != null) {
+			this.estado = enderecoJson.uf();
+		}
+		if(enderecoJson.logradouro() != null) {
+			this.logradouro = enderecoJson.logradouro();
+		}
+		if(enderecoJson.localidade() != null) {
+			this.municipio = enderecoJson.localidade();
+		}
+		if(enderecoJson.numero() != null) {
+			this.numero = enderecoJson.numero();
+		}
+		
 	}
 
 	public Long getCodigo() {
@@ -92,7 +127,6 @@ public class EntityEndereco {
 	public void setPessoa(EntityPessoa pessoa) {
 		this.pessoa = pessoa;
 	}
-	
-	
+
 	
 }
